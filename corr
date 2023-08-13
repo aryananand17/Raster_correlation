@@ -1,0 +1,21 @@
+##Don't forget to set the working directory!
+library(raster)
+library(MASS)
+library(ENMTools)
+#input predivtor variables##
+bio1 <- raster("bio1.asc")
+bio2 <- raster("bio2.asc")
+bio3 <- raster("bio3.asc")
+bio4 <- raster("bio4.asc")
+bio5 <- raster("bio5.asc")
+bio6 <- raster("bio6.asc")
+bio7 <- raster("bio7.asc")
+bio8 <- raster("bio8.asc")
+bio9 <- raster("bio9.asc")
+bio10 <- raster("bio10.asc")
+
+layers.stack <- raster::stack(bio1, bio2, bio3, bio4, bio5, bio6, bio7, bio8, bio9, bio10)
+
+correlations <- raster.cor.matrix(layers.stack)
+
+write.csv(correlations, "correlations.csv")
